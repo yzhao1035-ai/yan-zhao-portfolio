@@ -276,23 +276,8 @@ function ProjectPage({ project, onContact }) {
         <p className="detail-lead">{project.description}</p>
         <div className="detail-facts">{project.facts.map(([label, value]) => <div key={label}><small>{label}</small><span>{value}</span></div>)}</div>
       </section>
-      <figure className="detail-cover wrap">
-        <img src={project.heroImage} alt={`${project.name} 项目总览`} />
-        <figcaption><span>{project.fullName}</span><span>{project.tag}</span></figcaption>
-      </figure>
-      <section className="detail-story wrap">
-        <div className="detail-story-head">
-          <SectionLabel number="CASE STUDY">DESIGN PROCESS</SectionLabel>
-          <h2>从真实问题出发，<br /><em>让设计产生价值。</em></h2>
-        </div>
-        <div className="detail-story-copy">
-          <article><small>01 / THE CHALLENGE</small><h3>项目挑战</h3><p>{project.challenge}</p></article>
-          <article><small>02 / DESIGN APPROACH</small><h3>设计思路</h3><p>{project.approach}</p></article>
-          <article><small>03 / OUTCOME</small><h3>项目结果</h3><p>{project.result}</p></article>
-        </div>
-      </section>
       <section className="detail-gallery">
-        <div className="wrap gallery-heading"><span>SELECTED SCREENS</span><h2>设计过程与关键画面</h2><p>从策略思考到界面落地，呈现项目中的代表性设计。</p></div>
+
         <div className="gallery-list wrap">{project.gallery.map((src, itemIndex) => { const pageNumber = Number(src.split('/').pop().replace('.jpg', '')); return <figure className="gallery-image" key={src}><img src={src} loading={itemIndex > 1 ? 'lazy' : 'eager'} alt={`${project.name} 设计画板 ${pageNumber}`} /><figcaption><span>{project.name}</span><span>{String(pageNumber).padStart(2, '0')} / {String(project.galleryTotal).padStart(2, '0')}</span></figcaption></figure>; })}</div>
       </section>
       <section className="next-project wrap"><div><small>NEXT PROJECT · {next.id}</small><h2>{next.name}</h2></div><a href={projectUrl(next.slug)} aria-label={`查看${next.name}`}><ArrowUpRight size={24} /></a></section>
