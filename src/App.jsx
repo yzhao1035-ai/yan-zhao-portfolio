@@ -17,7 +17,7 @@ const projects = [
     type: 'CONSUMER PRODUCT / COMMERCIAL EXPERIENCE',
     description: '围绕年轻用户的个性化装扮需求，贯通皮肤发现、选择与设置流程。',
     metric: '20',
-    metricUnit: 'pt',
+    metricUnit: 'pp',
     metricLabel: '整体设置率提升',
     theme: 'skin',
     tag: 'ALIPAY · 2025',
@@ -277,7 +277,6 @@ function ProjectPage({ project, onContact }) {
         <div className="detail-facts">{project.facts.map(([label, value]) => <div key={label}><small>{label}</small><span>{value}</span></div>)}</div>
       </section>
       <section className="detail-gallery">
-
         <div className="gallery-list wrap">{project.gallery.map((src, itemIndex) => { const pageNumber = Number(src.split('/').pop().replace('.jpg', '')); return <figure className="gallery-image" key={src}><img src={src} loading={itemIndex > 1 ? 'lazy' : 'eager'} alt={`${project.name} 设计画板 ${pageNumber}`} /><figcaption><span>{project.name}</span><span>{String(pageNumber).padStart(2, '0')} / {String(project.galleryTotal).padStart(2, '0')}</span></figcaption></figure>; })}</div>
       </section>
       <section className="next-project wrap"><div><small>NEXT PROJECT · {next.id}</small><h2>{next.name}</h2></div><a href={projectUrl(next.slug)} aria-label={`查看${next.name}`}><ArrowUpRight size={24} /></a></section>
