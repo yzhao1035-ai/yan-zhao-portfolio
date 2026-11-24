@@ -428,7 +428,7 @@ body.modal-open { overflow: hidden; }
 @media (max-width: 760px) {
   .wrap { width: calc(100% - 40px); }
   .hero { height: 850px; min-height: 760px; max-height: 100svh; }
-  .hero-shade { background: linear-gradient(90deg,rgba(4,7,25,.62),rgba(4,7,25,.24)),linear-gradient(0deg,rgba(4,7,25,.48),transparent 62%); }
+  .hero-shade { background: linear-gradient(90deg,rgba(4,7,25,.76),rgba(4,7,25,.48) 58%,rgba(4,7,25,.25)),linear-gradient(0deg,rgba(4,7,25,.76),rgba(4,7,25,.18) 55%,rgba(4,7,25,.34)); }
   .nav { height: 76px; }
   .hero > .nav { height: 96px; padding-top: 0; }
   .nav nav { display: none; }
@@ -445,7 +445,7 @@ body.modal-open { overflow: hidden; }
   .hero-intro-copy { gap: 16px; }
   .resume-download { min-height: 40px; gap: 9px; padding: 7px 16px; font-size: 14px; }
   .resume-download img { width: 15px; height: 20px; }
-  .hero-fluid-wrap { top: 4%; right: -12%; width: 66vw; opacity: .7; perspective: 1200px; }
+  .hero-fluid-wrap { z-index: 1; top: 4%; right: -13%; width: 54vw; opacity: .62; perspective: 1200px; }
   .hero-fluid { animation-duration: 8s; }
   .hero-aside { display: none; }
   .hero-index { right: 16px; bottom: 23px; gap: 12px; font-size: 7px; }
