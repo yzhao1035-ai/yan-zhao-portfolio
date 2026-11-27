@@ -16,9 +16,9 @@ const projects = [
     name: '皮肤中心体验改版',
     type: 'CONSUMER PRODUCT / COMMERCIAL EXPERIENCE',
     description: '围绕年轻用户的个性化装扮需求，贯通皮肤发现、选择与设置流程。',
-    metric: '20',
-    metricUnit: 'pp',
-    metricLabel: '整体设置率提升',
+    metric: '16',
+    metricUnit: '%',
+    metricLabel: '阵地页整体点击率',
     theme: 'skin',
     tag: 'ALIPAY · 2025',
     roles: ['视觉体验设计', '交互设计'],
@@ -37,8 +37,9 @@ const projects = [
     name: '皮肤小窝',
     type: 'AI PRODUCT / 0—1 EXPERIENCE',
     description: '从照片到专属数字皮肤，探索如何让 AI 生成过程清晰、轻松、可信。',
-    metric: '0—1',
-    metricLabel: 'AI 定制产品完整体验',
+    metric: '20',
+    metricUnit: 'pp',
+    metricLabel: '整体设置率提升',
     theme: 'nest',
     tag: 'AI MINI PROGRAM',
     roles: ['产品规划', '交互设计', '视觉设计'],
@@ -46,7 +47,7 @@ const projects = [
     challenge: '上传照片与 AI 生成会带来输入成本、结果不确定和隐私顾虑。用户需要知道如何操作、会得到什么，以及照片将如何使用。',
     approach: '参与 0—1 产品规划，建立照片上传、类型选择、风格选择和生成结果的核心流程；用上传指引、隐私说明、示例与过程反馈降低使用门槛。',
     result: '小程序曾上线，后期已下线，目前没有可公开的独立业务数据。项目沉淀了从产品规划到交互、视觉落地的完整 AI 产品实践。',
-    gallery: [2, 3, 4, 5, 6, 7, 9, 10, 11, 12, 13].map((number) => asset(`assets/projects/ai-studio/${number}.jpg`)),
+    gallery: [2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13].map((number) => asset(`assets/projects/ai-studio/${number}.jpg`)),
     galleryTotal: 13,
     heroImage: asset('assets/portfolio/ai-skin-studio.jpg'),
     facts: [['项目类型', 'AI 产品 / 小程序 / 0—1 体验'], ['个人职责', '产品规划、交互设计、视觉设计']],
@@ -239,7 +240,7 @@ function ProjectCard({ project, index }) {
       style={{ y: reduceMotion ? 0 : y, zIndex: index + 1 }}
     >
       <div className="project-card-image">
-        <img src={project.heroImage} alt={`${project.name} 项目封面`} loading={index === 0 ? 'eager' : 'lazy'} />
+        <img src={project.heroImage} alt={`${project.name} 项目封面`} loading="lazy" decoding="async" />
         <span>{project.id} / {project.tag}</span>
       </div>
       <motion.div className="project-card-copy">
@@ -277,7 +278,7 @@ function ProjectPage({ project, onContact }) {
         <div className="detail-facts">{project.facts.map(([label, value]) => <div key={label}><small>{label}</small><span>{value}</span></div>)}</div>
       </section>
       <section className="detail-gallery">
-        <div className="gallery-list wrap">{project.gallery.map((src, itemIndex) => { const pageNumber = Number(src.split('/').pop().replace('.jpg', '')); return <figure className="gallery-image" key={src}><img src={src} loading={itemIndex > 1 ? 'lazy' : 'eager'} alt={`${project.name} 设计画板 ${pageNumber}`} /><figcaption><span>{project.name}</span><span>{String(pageNumber).padStart(2, '0')} / {String(project.galleryTotal).padStart(2, '0')}</span></figcaption></figure>; })}</div>
+        <div className="gallery-list wrap">{project.gallery.map((src, itemIndex) => { const pageNumber = Number(src.split('/').pop().replace('.jpg', '')); return <figure className="gallery-image" key={src}><img src={src} loading={itemIndex === 0 ? 'eager' : 'lazy'} decoding="async" fetchPriority={itemIndex === 0 ? 'high' : 'auto'} alt={`${project.name} 设计画板 ${pageNumber}`} /><figcaption><span>{project.name}</span><span>{String(pageNumber).padStart(2, '0')} / {String(project.galleryTotal).padStart(2, '0')}</span></figcaption></figure>; })}</div>
       </section>
       <section className="next-project wrap"><div><small>NEXT PROJECT · {next.id}</small><h2>{next.name}</h2></div><a href={projectUrl(next.slug)} aria-label={`查看${next.name}`}><ArrowUpRight size={24} /></a></section>
       <footer className="detail-footer"><a href={BASE_URL}>赵艳 / 短腿书生</a><button type="button" onClick={onContact}>喜欢就联系我 <ArrowUpRight size={15} /></button><span>© 2026 YAN ZHAO</span></footer>
